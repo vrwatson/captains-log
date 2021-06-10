@@ -4,11 +4,14 @@ const logs = require("./models/log")
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("welcome to the captain's log");
 });
 
 app.use("/logs", logsController);
+
 
 app.get("/logs/:arrayIndex", (req, res) => {
   const { arrayIndex } = req.params;
