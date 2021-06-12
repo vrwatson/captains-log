@@ -29,5 +29,18 @@ logs.get("/", (req, res) => {
     })
 });
 
+logs.put("/:arrayIdx", (req, res) => {
+    const { arrayIdx } = req.params
+    const { body } = req
+    logsArray[arrayIdx] = body;
+    res.json(logsArray[arrayIdx])
+})
+
+logs.delete("/:arrayIdx", (req, res) => {
+    const { arrayIdx } = req.params
+    const { deletedIdx } = logsArray.splice(arrayIdx, 1)
+    res.json(deletedIdx[0])
+})
+
 
 module.exports = logs
